@@ -1,6 +1,7 @@
 use bevy::prelude::*;
 
 mod components;
+mod config;
 
 fn main() {
     App::new()
