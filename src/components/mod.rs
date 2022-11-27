@@ -1,9 +1,0 @@
-pub mod boss_card;
-pub mod castle;
-pub mod chapter_card;
-pub mod chapter_dice;
-pub mod character_card;
-pub mod character_dice;
-pub mod common;
-pub mod item_card;
-pub mod start_card;

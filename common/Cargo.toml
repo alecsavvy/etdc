@@ -1,0 +1,9 @@
+[package]
+name = "common"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+serde = { version = "1.0.147", features = ["derive"]}
+# we'll use normal json for now, since both client and server use serde we should be able to change out library painlessly
+serde_json = "1.0.88"

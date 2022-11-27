@@ -1,4 +1,6 @@
 use bevy::prelude::*;
 
 #[derive(Debug, Component)]
-pub struct ChapterCard;
+pub struct Player {
+    pub name: String,
+}

@@ -1,11 +1,7 @@
-[package]
-name = "etdc"
-version = "0.1.0"
-edition = "2021"
+[workspace]
+members = ["client", "server", "common"]
 
-[dependencies]
-bevy = "0.8" # bevy = { version = "0.8.0", features = ["dynamic"] }
-rand = "0.8.5"
+resolver = "2"
 
 # Enable a small amount of optimization in debug mode
 [profile.dev]
