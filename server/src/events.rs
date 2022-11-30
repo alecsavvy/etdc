@@ -1,4 +1,7 @@
+use serde::{Deserialize, Serialize};
+
 // Card Events
+#[derive(Debug, Serialize, Deserialize)]
 pub struct DrawCard {
     pub player_name: String,
 }
