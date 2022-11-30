@@ -1,5 +1,15 @@
 use serde::{Deserialize, Serialize};
 
+#[derive(Debug, Serialize, Deserialize)]
+#[serde(tag = "event", rename_all = "snake_case")]
+pub enum Events {
+    PlayerCreate(PlayerCreate),
+    PlayerJoined(PlayerJoined),
+    PlayerPaused(PlayerPaused),
+    PlayerExited(PlayerExited),
+    PlayerDied(PlayerDied),
+}
+
 // Card Events
 #[derive(Debug, Serialize, Deserialize)]
 pub struct DrawCard {
@@ -54,6 +64,7 @@ pub struct PlayerJoined {
     pub player_name: String,
 }
 
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PlayerPaused {
     pub player_name: String,
 }

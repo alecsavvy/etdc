@@ -1,19 +1,31 @@
 use bevy::{log::LogPlugin, prelude::*};
 
+mod adapters;
 mod components;
 mod events;
 mod state;
 mod systems;
 
 use state::GameState;
+use tokio::net::TcpListener;
 
-fn main() {
+#[tokio::main]
+async fn main() -> Result<(), std::io::Error> {
+    let addr = "127.0.0.1:8080".to_string();
+    let listener = TcpListener::bind(&addr).await?;
+
+    while let Ok((stream, _)) = listener.accept().await {
+        tokio::spawn(adapters::ws::handle_connection(stream));
+    }
+
     let mut app = App::new();
     add_plugins(&mut app);
     init_resources(&mut app);
     add_events(&mut app);
     add_systems(&mut app);
     app.run();
+
+    Ok(())
 }
 
 fn add_plugins(app: &mut App) {
