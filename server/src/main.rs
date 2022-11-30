@@ -1,11 +1,11 @@
-use bevy::{input::keyboard::KeyboardInput, log::LogPlugin, prelude::*};
+use bevy::{log::LogPlugin, prelude::*};
 
 mod components;
 mod events;
 mod state;
 mod systems;
 
-use state::{CliInput, GameState};
+use state::GameState;
 
 fn main() {
     let mut app = App::new();
@@ -22,9 +22,7 @@ fn add_plugins(app: &mut App) {
 }
 
 fn init_resources(app: &mut App) {
-    app.init_resource::<GameState>()
-        .init_resource::<CliInput>()
-        .init_resource::<Input<KeyCode>>();
+    app.init_resource::<GameState>();
 }
 
 fn add_events(app: &mut App) {
@@ -44,17 +42,13 @@ fn add_events(app: &mut App) {
         .add_event::<PlayerJoined>()
         .add_event::<PlayerPaused>()
         .add_event::<PlayerExited>()
-        .add_event::<PlayerDied>()
-        // Keyboard Events
-        .add_event::<ReceivedCharacter>();
+        .add_event::<PlayerDied>();
 }
 
 fn add_systems(app: &mut App) {
-    use systems::cli_input::*;
     use systems::players::*;
     app
         // Player Systems
         .add_system(player_create)
-        .add_system(player_created_debug)
-        .add_system(cli_input);
+        .add_system(player_created_debug);
 }
