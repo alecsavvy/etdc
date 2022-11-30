@@ -14,6 +14,11 @@ pub fn player_create(
     mut ev_pc: EventReader<PlayerCreate>,
     mut ev_pj: EventWriter<PlayerJoined>,
 ) {
+    // check conditions before allowing player creation
+    // does player name already exist?
+    // are there enough player slots in the game left for creation?
+    // has the game already begun?
+
     // read player create events and spawn them
     let mut players = vec![];
     let mut player_joined = vec![];
